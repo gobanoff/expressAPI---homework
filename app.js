@@ -1,6 +1,8 @@
 // Import required modules
 const express = require('express');
 const bodyParser = require('body-parser');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swagger');
 
 // Create an Express app
 const app = express();
@@ -21,7 +23,20 @@ let items = [
 ];
 
 // Routes
-
+/**
+ * @swagger
+ * /shop:
+ *   get:
+ *     summary: Get shop information
+ *     description: Retrieve shop details.
+ *     responses:
+ *       200:
+ *         description: Successful operation
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Shop'
+ */
 // Get shop information
 app.get('/shop', (req, res) => {
     res.json(shop);
@@ -79,3 +94,5 @@ app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
+// Serve Swagger documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
