@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    p {font-weight: 500;
+        font-size: 35px;
+        color: blue;
+    }
+    .a{padding: 150px;}
+</style>
+
+<body>
+    <div class="a">
+        <p>200 OK: Indicates that the request was successful. This is the standard response for successful HTTP
+            requests.
+        </p>
+        <p>201 Created: Used when a new resource is successfully created as a result of a POST request. The response
+            body
+            typically contains details about the newly created resource.</p>
+        <p>400 Bad Request: Signifies that the server cannot process the request due to invalid syntax or parameters in
+            the
+            request. It's typically used when the client sends a malformed request.</p>
+        <p>401 Unauthorized: Indicates that the request requires user authentication. The client needs to provide valid
+            credentials (e.g., username and password) to access the resource.</p>
+        <p>403 Forbidden: Denotes that the server understood the request, but the client is not allowed to access the
+            requested resource. Unlike 401, the client's identity is known to the server.</p>
+        <p>404 Not Found: Indicates that the requested resource could not be found on the server. It's commonly used
+            when
+            the server cannot locate the requested resource.</p>
+        <p>500 Internal Server Error: Signifies that something went wrong on the server while processing the request,
+            and it
+            couldn't fulfill the request due to an unexpected condition. This is a generic error message for server-side
+            errors.</p>
+    </div>
+</body>
+
+</html>
