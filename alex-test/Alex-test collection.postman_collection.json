@@ -7,10 +7,146 @@
 	},
 	"item": [
 		{
-			"name": "New Request",
+			"name": "post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// GET endpoint returns status code 200\r",
+							"pm.test(\"GET endpoint returns status code 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// GET endpoint returns non-empty response body\r",
+							"pm.test(\"GET endpoint returns non-empty response body\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.an(\"array\").that.is.not.empty;\r",
+							"});\r",
+							"// POST endpoint returns status code 201\r",
+							"pm.test(\"POST endpoint returns status code 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"// DELETE endpoint returns status code 204\r",
+							"pm.test(\"DELETE endpoint returns status code 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							"\r",
+							"// DELETE endpoint response body is empty\r",
+							"pm.test(\"DELETE endpoint response body is empty\", function () {\r",
+							"    pm.response.to.not.have.jsonBody();\r",
+							"});\r",
+							"// PUT endpoint returns status code 200 or 201 (assuming an update)\r",
+							"pm.test(\"PUT endpoint returns status code 200 or 201\", function () {\r",
+							"    pm.response.to.have.status.oneOf([200, 201]);\r",
+							"});\r",
+							"\r",
+							"// PUT endpoint response contains an object with at least 3 properties\r",
+							"pm.test(\"PUT endpoint response contains an object with at least 3 properties\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.an(\"object\").with.property(\"property1\");\r",
+							"    pm.expect(jsonData).to.be.an(\"object\").with.property(\"property2\");\r",
+							"    pm.expect(jsonData).to.be.an(\"object\").with.property(\"property3\");\r",
+							"});\r",
+							"\r",
+							"// PUT endpoint response Id is not empty\r",
+							"pm.test(\"PUT endpoint response Id is not empty\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"Id\").that.is.not.empty;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/shops",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"shops"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// GET endpoint returns status code 200\r",
+							"pm.test(\"GET endpoint returns status code 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// GET endpoint returns non-empty response body\r",
+							"pm.test(\"GET endpoint returns non-empty response body\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.an(\"array\").that.is.not.empty;\r",
+							"});\r",
+							"// POST endpoint returns status code 201\r",
+							"pm.test(\"POST endpoint returns status code 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"// DELETE endpoint returns status code 204\r",
+							"pm.test(\"DELETE endpoint returns status code 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							"\r",
+							"// DELETE endpoint response body is empty\r",
+							"pm.test(\"DELETE endpoint response body is empty\", function () {\r",
+							"    pm.response.to.not.have.jsonBody();\r",
+							"});\r",
+							"// PUT endpoint returns status code 200 or 201 (assuming an update)\r",
+							"pm.test(\"PUT endpoint returns status code 200 or 201\", function () {\r",
+							"    pm.response.to.have.status.oneOf([200, 201]);\r",
+							"});\r",
+							"\r",
+							"// PUT endpoint response contains an object with at least 3 properties\r",
+							"pm.test(\"PUT endpoint response contains an object with at least 3 properties\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.an(\"object\").with.property(\"property1\");\r",
+							"    pm.expect(jsonData).to.be.an(\"object\").with.property(\"property2\");\r",
+							"    pm.expect(jsonData).to.be.an(\"object\").with.property(\"property3\");\r",
+							"});\r",
+							"\r",
+							"// PUT endpoint response Id is not empty\r",
+							"pm.test(\"PUT endpoint response Id is not empty\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"Id\").that.is.not.empty;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/shops",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"shops"
+					]
+				}
 			},
 			"response": []
 		}
